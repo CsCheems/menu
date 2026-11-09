@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f7f6f2" />
+    <title>Soul Quality · Menú digital</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <!-- Sustituye este elemento por <img src="logo.png" alt="Soul Quality" width="52" height="52"> -->
+        <div class="logo" aria-hidden="true">sq.</div>
+        <div>
+          <strong>Soul Quality</strong>
+          <p>Menú digital · Cocina y bebidas</p>
+        </div>
+      </div>
+      <div class="eyebrow">FRESCO · LOCAL · A TU GUSTO</div>
+      <h1>¿Qué se te antoja hoy?</h1>
+      <p>Elige tus favoritos. Nosotros ponemos el sabor.</p>
+      <nav id="categories" aria-label="Categorías del menú"></nav>
+    </header>
+    <main>
+      <h2 id="category-title">Nuestro menú</h2>
+      <p class="fine">
+        Desayunos hasta la 1:00 p. m. Para elegir salsas, bases y
+        acompañamientos, escribe tus preferencias en las indicaciones del
+        pedido. Extras de proteína en pastas y platos fuertes: consulta
+        disponibilidad con el restaurante.
+      </p>
+      <div id="catalog"></div>
+    </main>
+    <button
+      id="cart-button"
+      class="floating"
+      hidden
+      aria-haspopup="dialog"
+      aria-controls="cart-dialog"
+    >
+      <span id="cart-count"></span><span id="cart-total"></span>
+    </button>
+    <div id="status" role="status" aria-live="polite"></div>
+    <dialog id="cart-dialog" aria-labelledby="cart-title">
+      <div class="modal-header">
+        <h2 id="cart-title">Tu pedido</h2>
+        <button
+          class="close"
+          id="close"
+          aria-label="Cerrar carrito"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="cart-items"></div>
+        <div class="total"><span>Total</span><span id="total"></span></div>
+        <p class="fine">
+          Precios en MXN. El envío, si aplica, se confirma por WhatsApp.
+        </p>
+        <form id="order-form">
+          <label for="customer">Nombre del cliente *</label
+          ><input
+            id="customer"
+            name="customer"
+            type="text"
+            autocomplete="name"
+            maxlength="100"
+            required
+            placeholder="¿A nombre de quién?"
+          />
+          <fieldset>
+            <legend>¿Cómo recibirás tu pedido?</legend>
+            <div class="options">
+              <label
+                ><input
+                  type="radio"
+                  name="delivery"
+                  value="pickup"
+                  checked
+                />Para recoger</label
+              ><label
+                ><input type="radio" name="delivery" value="delivery" />A
+                domicilio</label
+              >
+            </div>
+          </fieldset>
+          <div id="address-field" hidden>
+            <label for="address">Dirección de entrega *</label
+            ><input
+              id="address"
+              name="address"
+              type="text"
+              autocomplete="street-address"
+              maxlength="300"
+              disabled
+              placeholder="Calle, número, colonia y referencias"
+            />
+          </div>
+          <label for="notes">Indicaciones generales</label
+          ><textarea
+            id="notes"
+            name="notes"
+            maxlength="1000"
+            placeholder="Sin cebolla, alguna referencia…"
+          ></textarea>
+          <p id="error" role="alert" hidden></p>
+          <button class="submit" type="submit" id="checkout">
+            Continuar en WhatsApp ↗
+          </button>
+          <p class="fine">
+            Revisa y envía el mensaje en WhatsApp para solicitar tu pedido. La
+            disponibilidad y entrega se confirman con el restaurante.
+          </p>
+        </form>
+      </div>
+    </dialog>
+    <script src="config.js"></script>
+    <script src="products.js"></script>
+    <script src="dom.js"></script>
+    <script src="cart.js"></script>
+    <script src="order.js"></script>
+    <script src="catalog-view.js"></script>
+    <script src="cart-view.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
